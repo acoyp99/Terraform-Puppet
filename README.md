@@ -2,7 +2,9 @@
 
 _Ejemplo de aprovisionamiento de una VSI configurando a su vez Tomcat de forma autimatizada haciendo uso de Chef Infra_
 
-<img width="50" alt="Tomcat" src="https://img.icons8.com/color/48/000000/tomcat.png">
+<img width="545" alt="workspace" src="images/Diagrama.jpg">
+
+_Encuentre el código del Tomcatcb aquí [tomcatcb](https://github.com/JulianaLeonGonzalez/tomcatcb)._
 
 ## Terraform :triangular_flag_on_post:
 
@@ -31,7 +33,7 @@ El aprovisionamiento de un VSI :
 | **hourly_billing**  | Tipo de facturación de la VSI _**true** = facturación por horas_ o _**false** = facturación mensual_ |
 | **network_mode**  | Tipo de conexión a la red _**true** = Red unicamente privada_ o _**false** = Red publica y privada_ |
 | **cores**  | Configuración de nucleos de la VSI |
-| **memory**  | Memoria RAM de la VSI **Gigas de memoria RAM * 1024** ---- EJ : _2 Gb = 2048_ / _10 Gb = 10240_|
+| **memory**  | Memoria RAM de la VSI **Gigas de memoria RAM * 1024** ---- EJ : _2 Gb = 2048_ / _10 Gb = 10240_|z
 | **ssh_public_key**  | Llave publica generada. Mas información: https://www.ssh.com/ssh/keygen/ |
 | **private_key**  | Llave privada generada. Mas información: https://www.ssh.com/ssh/keygen/ |
 | **cookbook_git**  | Repositorio que contiene el Github a ejecutar con CHEF |
@@ -57,7 +59,7 @@ Luego de esto se genera un chef-repo, que es un directorio dentro del workstatio
 ```sh
 echo yes | chef generate repo chef-repo
 ```
-Es necesario ingresar a la carpeta cookbooks dentro del chef-repo generado y clonar el repositorio de GitHub que contiene nuestro cookbook llamado tomcatcb el cual podrá encontrar en el siguiente link [tomcatcb](https://github.com/JulianaLeonGonzalez/tomcatcb), para este proceso se usan los siguientes comandos:
+Es necesario ingresar a la carpeta cookbooks dentro del chef-repo generado y clonar el repositorio de GitHub que contiene nuestro cookbook llamado tomcatcb, para este proceso se usan los siguientes comandos:
 
 ```sh
 cd chef-repo/cookbooks 
@@ -74,17 +76,17 @@ chef-client --local-mode --override-runlist cookbook
 
 ## Despliegue en Schematics :wrench: :triangular_flag_on_post:
 
-Se debe dirigir al simbolo de ![](images/menu.JPG) en donde encontrará la opción de **Schematics** una vez alli se creará un nuevo workspace donde se contará con la siguiente pestaña:
-<img width="945" alt="workspace" src="images/workspace.JPG"> 
+Se debe dirigir al simbolo de menú en donde encontrará la opción de **Schematics** una vez alli se creará un nuevo workspace donde se contará con la siguiente pestaña:
+
+<img width="545" alt="workspace" src="images/workspace.JPG"> 
 
 Para la configuración de la SSH Keys se debe abrir la terminar del PC en ingresar el comando 
-**ssh-keygen -m PEM -t rsa -f "NOMBRE_DE_LA_LLAVE"**
-
-<img width="645" alt="workspace" src="images/ssh-command.JPG">
+```sh
+ssh-keygen -m PEM -t rsa -f <NOMBRE_DE_LA_LLAVE>
+```
+<img width="545" alt="workspace" src="images/ssh-command.JPG">
 
 Al ejecutar el comando se crearan dos archivos. Uno de ellos con extensión .pub cuyo contenido de texto contiene una llave SSH publica. El otro archivos no tiene extensión y contiene la llave SSH privada. Se deben copiar y pegar cada una de ellas en las variables definidas anteriormente.
-
-<img width="445" alt="workspace" src="images/ssh-keys.JPG">
 
 Luego de tener estas llaves se agregan a las variables de entrada como se muestra a continuación:
 
