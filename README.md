@@ -1,4 +1,4 @@
-# Virtual Server-Aprovisionamiento y configuración de Tomcat con Chef Infra mediante Terraform :cloud:
+# :cloud: Virtual Server-Aprovisionamiento y configuración de Tomcat con Chef Infra mediante Terraform :cloud:
 
 _Ejemplo de aprovisionamiento de una VSI configurando a su vez Tomcat de forma autimatizada haciendo uso de Chef Infra_
 
@@ -6,11 +6,21 @@ _Ejemplo de aprovisionamiento de una VSI configurando a su vez Tomcat de forma a
 
 _Encuentre el código del Tomcatcb aquí [tomcatcb](https://github.com/JulianaLeonGonzalez/tomcatcb)._
 
-## Terraform :triangular_flag_on_post:
+### Indice:
+1. [Archivos Terraform](#1-Archivos-Terraform)
+- [Archivos](#Archivos)
+- [Variables](#Variables)
+2. [Configuración de Chef](#Configuración-de-Chef)
+3. [Despliegue en Schematics](#Despliegue-en-Schematics)
+4. [Resultados](#Resultados-)
+5. [Referencias](#Referencias-)
+
+
+## 1. Archivos Terraform 
 
 Terraform es una herramienta de aprovisionamiento de infraestructura que utiliza aprovisionadores, en este caso se hace uso del aprovisionador de ejecución remota para correr un conjunto de comandos en línea en la máquina recién creada y, de esta forma, instalar un chef workstation y automatizar la creación de un servidor tomcat.
 
-### Instrucciones :bookmark_tabs:
+### Archivos :bookmark_tabs:
 
 Para el aprovisionamiento de una VSI se requiere de mínimo tres archivos .tf de configuración los cuales son:
 - variable.tf = Contiene las variables de llaves y nombres unicos que el cliente introduce en su servicio
@@ -40,7 +50,7 @@ El aprovisionamiento de un VSI :
 | **cookbook_name**  | Nombre del cookbook importado |
 
 
-## Chef :fork_and_knife: :triangular_flag_on_post:
+## 2. Configuración de Chef :fork_and_knife: 
 
 Chef Infra es un marco de automatización de infraestructura de código abierto que permite definir el estado de su infraestructura y mantenerlos de forma automatizada. El flujo de trabajo normal de Chef implica la administración remota de servidores desde un workstation, pero en esta guía ejecutará chef-client "local-mode", para ejecutar chef sin un Chef Server externo.
 
@@ -74,7 +84,7 @@ cd ..
 chef-client --local-mode --override-runlist cookbook
 ```
 
-## Despliegue en Schematics :wrench: :triangular_flag_on_post:
+## 3. Despliegue en Schematics :wrench: 
 
 Se debe dirigir al simbolo de menú en donde encontrará la opción de **Schematics** una vez alli se creará un nuevo workspace donde se contará con la siguiente pestaña:
 
@@ -98,13 +108,13 @@ En el espacio sobremarcado con rojo se debe pegar el link del repositorio y de s
 
 Se debe generar el plan con el botón que aparece en pantalla y de generarse correctamente se podrá aplicar el plan. _Solo hasta aplicar el plan se va a generar facturación_
 
-## Resultados  :computer: :triangular_flag_on_post:
+## Resultados  :computer: 
 
 En su buscador web de preferencia ingrese el dirección IP de su máquina seguida del puerto 8080, encontrará un resultado como el que se muestra a continuación:
 
 <img width="945" alt="workspace" src="images/resultado.PNG">
 
-## Referencias  :mag: :triangular_flag_on_post:
+## Referencias  :mag: 
 
 Encuentre información sobre terraform en IBM cloud en: [Managing IBM Cloud resources with Terraform](https://cloud.ibm.com/docs/terraform?topic=terraform-manage_resources)
 <br>
