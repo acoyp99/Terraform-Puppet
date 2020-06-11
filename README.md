@@ -1,19 +1,19 @@
-# :cloud: Virtual Server-Aprovisionamiento y configuración de Tomcat con Chef Infra mediante Terraform :cloud:
+# Virtual Server-Aprovisionamiento y configuración de Tomcat con Chef Infra mediante Terraform :cloud:
 
-_Ejemplo de aprovisionamiento de una VSI configurando a su vez Tomcat de forma autimatizada haciendo uso de Chef Infra_
+En esta guía encontrará una descripción detallada sobre el aprovisionamiento de una VSI en IBM cloud mediante Schematics, configurando a su vez Tomcat de forma autimatizada haciendo uso de Chef Infra. La siguiente imagen hace referencia al proceso hecho a lo largo de la guía.
 
 <img width="545" alt="workspace" src="images/Diagrama.jpg">
 
 _Encuentre el código del Tomcatcb aquí [tomcatcb](https://github.com/JulianaLeonGonzalez/tomcatcb)._
 
 ### Indice:
-1. [Archivos Terraform](#1-Archivos-Terraform)
-- [Archivos](#Archivos)
-- [Variables](#Variables)
-2. [Configuración de Chef](#Configuración-de-Chef)
-3. [Despliegue en Schematics](#Despliegue-en-Schematics)
-4. [Resultados](#Resultados-)
-5. [Referencias](#Referencias-)
+1. [Archivos Terraform](#1-archivos-terraform)
+- [Archivos](#archivos-bookmark_tabs)
+- [Variables](#variables-)
+2. [Configuración de Chef](#2-configuración-de-chef-fork_and_knife)
+3. [Despliegue en Schematics](#3-despliegue-en-schematics-wrench)
+4. [Resultados](#resultados--computer)
+5. [Referencias](#referencias--mag)
 
 
 ## 1. Archivos Terraform 
@@ -55,8 +55,6 @@ El aprovisionamiento de un VSI :
 Chef Infra es un marco de automatización de infraestructura de código abierto que permite definir el estado de su infraestructura y mantenerlos de forma automatizada. El flujo de trabajo normal de Chef implica la administración remota de servidores desde un workstation, pero en esta guía ejecutará chef-client "local-mode", para ejecutar chef sin un Chef Server externo.
 
 A continuación encontrará una descripción de los comandos utilizados en el provisioner "remote-exec" de nuestra plantilla de terraform. Estos comandos los encontrará en el archivo main.tf.
-
-### Comandos del provisioner "remote-exec" ⚙️
 
 Para comenzar se instala Chef Workstation mediante los siguientes comandos:
 
