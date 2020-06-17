@@ -1,4 +1,4 @@
-# Virtual Server-Aprovisionamiento y configuración de Tomcat con Chef Infra mediante Terraform :cloud:
+# Virtual Server - Aprovisionamiento y configuración de Tomcat con Chef Infra mediante Terraform :cloud:
 
 En esta guía encontrará una descripción detallada sobre el aprovisionamiento de una VSI en IBM cloud mediante Schematics, configurando a su vez Tomcat de forma autimatizada haciendo uso de Chef Infra. La siguiente imagen hace referencia al proceso hecho a lo largo de la guía.
 
