@@ -33,6 +33,7 @@ resource "ibm_compute_vm_instance" "terraform_p_sample" {
       "echo yes | chef generate repo chef-repo",
       "cd chef-repo/cookbooks",
       "git clone ${var.cookbook_git}",
+      "mv ${var.repo_name}/${var.cookbook_name}/ /chef-repo/cookbooks/
       "cd ..",
       "chef-client --local-mode --override-runlist ${var.cookbook_name}"
     ]
