@@ -56,6 +56,10 @@ variable "cookbook_git" {
   description = "Ingresa la dirección URL del GITHUB que contiene el cookbook "
 }
 
+variable "repo_name" {
+  description = "Ingrese el nombre del repositorio que contiene el cookbook"
+}
+
 variable "cookbook_name" {
   description = "Ingresa el nombre del cookbook a ejecutar"
 }
