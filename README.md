@@ -67,11 +67,12 @@ Luego de esto se genera un chef-repo, que es un directorio dentro del workstatio
 ```sh
 echo yes | chef generate repo chef-repo
 ```
-Es necesario ingresar a la carpeta cookbooks dentro del chef-repo generado y clonar el repositorio de GitHub que contiene nuestro cookbook llamado tomcatcb, para este proceso se usan los siguientes comandos:
+Es necesario ingresar a la carpeta cookbooks dentro del chef-repo generado y clonar el repositorio de GitHub que contiene nuestro cookbook llamado tomcatcb, como la plantilla de terraform contiene el cookbook se requiere especificar tanto el nombre del repositorio como del cookbook dentro de él. Para este proceso se usan los siguientes comandos:
 
 ```sh
 cd chef-repo/cookbooks 
-git clone https://github.com/JulianaLeonGonzalez/tomcatcb.git
+git clone <direccion URL del repositorio en GITHUB>
+mv <Nombre del repositorio/Nombre del cookbook> chef-repo/cookbooks
 ```
 
 **Nota:** Si se desea crear un cookbook desde la consola, el comando anterior podría ser reemplazado por: _chef generate cookbook chef-repo/cookbooks/tomcatcb_ o si desea encuentre más información sobre los cookbooks en este link [información de cookbooks](https://docs.chef.io/cookbooks/).
