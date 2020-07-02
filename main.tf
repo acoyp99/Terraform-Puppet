@@ -27,15 +27,9 @@ resource "ibm_compute_vm_instance" "terraform_p_sample" {
   provisioner "remote-exec" {
     inline = [
       "yes | sudo apt-get update", 
-      "cd ..",
-      "wget -nv -P /downloads https://packages.chef.io/files/stable/chef-workstation/0.18.3/ubuntu/18.04/chef-workstation_0.18.3-1_amd64.deb",
-      "dpkg -i /downloads/chef-workstation_0.18.3-1_amd64.deb",
-      "echo yes | chef generate repo chef-repo",
-      "cd chef-repo/cookbooks",
-      "git clone ${var.cookbook_git}",
-      "mv ${var.repo_name}/${var.cookbook_name}/ /chef-repo/cookbooks/",
-      "cd ..",
-      "chef-client --local-mode --override-runlist ${var.cookbook_name}"
+      "yes | sudo apt install puppetmaster",
+      "git clone ${var.repo_git}",
+      "puppet apply ${var.repo_name}/${var.puppet_file}
     ]
   }
 }

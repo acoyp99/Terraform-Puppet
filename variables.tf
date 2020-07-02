@@ -52,7 +52,7 @@ variable "private_key" {
   description = "Generar un conjunto de llaves SSH-KEYGEN -Private Key- "
 }
 
-variable "cookbook_git" {
+variable "repo_git" {
   description = "Ingresa la dirección URL del GITHUB que contiene el cookbook "
 }
 
@@ -60,6 +60,6 @@ variable "repo_name" {
   description = "Ingrese el nombre del repositorio que contiene el cookbook"
 }
 
-variable "cookbook_name" {
+variable "puppet_file" {
   description = "Ingresa el nombre del cookbook a ejecutar"
 }

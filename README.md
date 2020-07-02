@@ -1,8 +1,7 @@
-# Virtual Server - Aprovisionamiento y configuración de Tomcat con Chef Infra mediante Terraform :cloud:
+# Virtual Server - Aprovisionamiento y configuración con Terraform y Puppet :cloud:
 
-En esta guía encontrará una descripción detallada sobre el aprovisionamiento de una VSI en IBM cloud mediante Schematics, configurando a su vez Tomcat de forma autimatizada haciendo uso de Chef Infra. La siguiente imagen hace referencia al proceso hecho a lo largo de la guía.
+En esta guía encontrará una descripción detallada sobre el aprovisionamiento de una VSI en IBM cloud mediante Schematics, integrado con Puppet el cual es un gestor de configuraciones
 
-<img width="545" alt="workspace" src="images/Diagrama.jpg">
 
 _Encuentre el código del Tomcatcb aquí [tomcatcb](https://github.com/JulianaLeonGonzalez/tomcatcb)._
 
@@ -10,7 +9,6 @@ _Encuentre el código del Tomcatcb aquí [tomcatcb](https://github.com/JulianaLe
 1. [Archivos Terraform](#1-archivos-terraform)
 - [Archivos](#archivos-bookmark_tabs)
 - [Variables](#variables-)
-2. [Configuración de Chef](#2-configuración-de-chef-fork_and_knife)
 3. [Despliegue en Schematics](#3-despliegue-en-schematics-wrench)
 4. [Resultados](#resultados--computer)
 5. [Referencias](#referencias--mag)
@@ -46,42 +44,11 @@ El aprovisionamiento de un VSI :
 | **memory**  | Memoria RAM de la VSI **Gigas de memoria RAM * 1024** ---- EJ : _2 Gb = 2048_ / _10 Gb = 10240_|z
 | **ssh_public_key**  | Llave publica generada. Mas información: https://www.ssh.com/ssh/keygen/ |
 | **private_key**  | Llave privada generada. Mas información: https://www.ssh.com/ssh/keygen/ |
-| **cookbook_git**  | Repositorio que contiene el Github a ejecutar con CHEF |
-| **cookbook_name**  | Nombre del cookbook importado |
 
 
-## 2. Configuración de Chef :fork_and_knife: 
 
-Chef Infra es un marco de automatización de infraestructura de código abierto que permite definir el estado de su infraestructura y mantenerlos de forma automatizada. El flujo de trabajo normal de Chef implica la administración remota de servidores desde un workstation, pero en esta guía ejecutará chef-client "local-mode", para ejecutar chef sin un Chef Server externo.
+## 2. Configuración de PUPPET 
 
-A continuación encontrará una descripción de los comandos utilizados en el provisioner "remote-exec" de nuestra plantilla de terraform. Estos comandos los encontrará en el archivo main.tf.
-
-Para comenzar se instala Chef Workstation mediante los siguientes comandos:
-
-```sh
-wget -nv -P /downloads https://packages.chef.io/files/stable/chef-workstation/0.18.3/ubuntu/18.04/chef-workstation_0.18.3-1_amd64.deb
-dpkg -i /downloads/chef-workstation_0.18.3-1_amd64.deb
-```
-Luego de esto se genera un chef-repo, que es un directorio dentro del workstation que almacena todo lo que necesita para definir su infraestructura, adicionalmente se establece “yes” como respuesta a las preguntas generadas al ejecutar el comando con el fin de automatizar el proceso.
-
-```sh
-echo yes | chef generate repo chef-repo
-```
-Es necesario ingresar a la carpeta cookbooks dentro del chef-repo generado y clonar el repositorio de GitHub que contiene nuestro cookbook llamado tomcatcb, como la plantilla de terraform contiene el cookbook se requiere especificar tanto el nombre del repositorio como del cookbook dentro de él. Para este proceso se usan los siguientes comandos:
-
-```sh
-cd chef-repo/cookbooks 
-git clone <direccion URL del repositorio en GITHUB>
-mv <Nombre del repositorio/Nombre del cookbook> chef-repo/cookbooks
-```
-
-**Nota:** Si se desea crear un cookbook desde la consola, el comando anterior podría ser reemplazado por: _chef generate cookbook chef-repo/cookbooks/tomcatcb_ o si desea encuentre más información sobre los cookbooks en este link [información de cookbooks](https://docs.chef.io/cookbooks/).
-
-Los siguientes comandos son utilizados para ubicarse en el chef-repo y luego ejecutar nuestro cookbook.
-```sh
-cd ..
-chef-client --local-mode --override-runlist cookbook
-```
 
 ## 3. Despliegue en Schematics :wrench: 
 
@@ -109,7 +76,7 @@ Se debe generar el plan con el botón que aparece en pantalla y de generarse cor
 
 ## Resultados  :computer: 
 
-En su buscador web de preferencia ingrese el dirección IP de su máquina seguida del puerto 8080, encontrará un resultado como el que se muestra a continuación:
+
 
 <img width="945" alt="workspace" src="images/resultado.PNG">
 
