@@ -3,8 +3,6 @@
 En esta guía encontrará una descripción detallada sobre el aprovisionamiento de una VSI en IBM cloud mediante Schematics, integrado con Puppet el cual es un gestor de configuraciones
 
 
-_Encuentre el código del Tomcatcb aquí [tomcatcb](https://github.com/JulianaLeonGonzalez/tomcatcb)._
-
 ### Indice:
 1. [Archivos Terraform](#1-archivos-terraform)
 - [Archivos](#archivos-bookmark_tabs)
