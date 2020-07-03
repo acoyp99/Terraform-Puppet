@@ -7,6 +7,7 @@ En esta guía encontrará una descripción detallada sobre el aprovisionamiento 
 1. [Archivos Terraform](#1-archivos-terraform)
 - [Archivos](#archivos-bookmark_tabs)
 - [Variables](#variables-)
+2. [Configuración de puppet]
 3. [Despliegue en Schematics](#3-despliegue-en-schematics-wrench)
 4. [Resultados](#resultados--computer)
 5. [Referencias](#referencias--mag)
@@ -47,6 +48,22 @@ El aprovisionamiento de un VSI :
 
 ## 2. Configuración de PUPPET 
 
+Para esta guía se hace uso de _puppet aply_, que permite aplicar manifiestos de la herramienta de administración de configuraciones Puppet de forma local  en la máquina que va a ser aprovisionada mediante Terraform.
+
+Para su configuración e instalación se agregan las siguientes líneas de código dentro de la plantilla de Terraform en la sección _Remote_exec_ del archivo main.tf.
+```sh
+"yes | sudo apt-get update", 
+      "yes | sudo apt install puppetmaster",
+      "git clone ${var.repo_git}",
+      "puppet apply ${var.repo_name}/${var.puppet_file}"
+```
+
+Una vez se instala y configura Puppet master en la máquina se procede a aplicar el manifest de Puppet localmente con el siguiente comando.
+```sh
+puppet apply manifest.pp
+```
+
+Teniendo en cuenta que manifest.pp es el nombre del archivo donde se encuentran las configuraciones que van a ser aplicadas a al virtual server aprovisionado. Para tener más información sobre las posibles configuraciones locales diríjase a la página de [Puppet](https://puppet.com/docs/puppet/latest/man/apply.html).
 
 ## 3. Despliegue en Schematics :wrench: 
 
