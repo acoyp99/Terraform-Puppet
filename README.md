@@ -7,7 +7,7 @@ En esta guía encontrará una descripción detallada sobre el aprovisionamiento 
 1. [Archivos Terraform](#1-archivos-terraform)
 - [Archivos](#archivos-bookmark_tabs)
 - [Variables](#variables-)
-2. [Configuración de puppet]
+2. [Configuración de puppet](#2-configuración-de-puppet)
 3. [Despliegue en Schematics](#3-despliegue-en-schematics-wrench)
 4. [Resultados](#resultados--computer)
 5. [Referencias](#referencias--mag)
@@ -46,7 +46,7 @@ El aprovisionamiento de un VSI :
 
 
 
-## 2. Configuración de PUPPET 
+## 2. Configuración de Puppet
 
 Para esta guía se hace uso de _puppet aply_, que permite aplicar manifiestos de la herramienta de administración de configuraciones Puppet de forma local  en la máquina que va a ser aprovisionada mediante Terraform.
 
