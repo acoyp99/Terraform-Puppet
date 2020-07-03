@@ -44,8 +44,6 @@ El aprovisionamiento de un VSI :
 | **ssh_public_key**  | Llave publica generada. Mas información: https://www.ssh.com/ssh/keygen/ |
 | **private_key**  | Llave privada generada. Mas información: https://www.ssh.com/ssh/keygen/ |
 
-
-
 ## 2. Configuración de Puppet
 
 Para esta guía se hace uso de _puppet aply_, que permite aplicar manifiestos de la herramienta de administración de configuraciones Puppet de forma local  en la máquina que va a ser aprovisionada mediante Terraform.
@@ -62,7 +60,6 @@ Una vez se instala y configura Puppet master en la máquina se procede a aplicar
 ```sh
 puppet apply manifest.pp
 ```
-
 Teniendo en cuenta que manifest.pp es el nombre del archivo donde se encuentran las configuraciones que van a ser aplicadas a al virtual server aprovisionado. Para tener más información sobre las posibles configuraciones locales diríjase a la página de [Puppet](https://puppet.com/docs/puppet/latest/man/apply.html).
 
 ## 3. Despliegue en Schematics :wrench: 
@@ -91,16 +88,12 @@ Se debe generar el plan con el botón que aparece en pantalla y de generarse cor
 
 ## Resultados  :computer: 
 
-
-
-<img width="945" alt="workspace" src="images/resultado.PNG">
-
 ## Referencias  :mag: 
 
 Encuentre información sobre terraform en IBM cloud en: [Managing IBM Cloud resources with Terraform](https://cloud.ibm.com/docs/terraform?topic=terraform-manage_resources)
 <br>
-Encuentre información sobre chef en: [Learn Chef ](https://learn.chef.io/modules/learn-the-basics#/)
+Encuentre información sobre Puppet en: [Learn Puppet ](https://puppet.com/docs/puppet/latest/puppet_index.html)
 <br>
-Encuentre informacipon sobre los cookbooks y recipes de chef en: [Cookboos & recipes ](https://docs.chef.io/ruby/) 
 
-### Autores: IBM Cloud Tech Sales
+## Autores :black_nib:
+IBM Cloud Tech Sales
