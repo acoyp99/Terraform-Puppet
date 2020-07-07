@@ -10,36 +10,6 @@ variable "domain" {
   default = "ibm.cloud-landingzone.com"
 }
 
-variable "datacenter" {
-  description = ""
-  default = "dal10"
-}
-
-variable "os_reference" {
-  description = ""
-  default = "UBUNTU_18_64"
-}
-
-variable "network_speed" {
-  default = "100"
-}
-
-variable "hourly_billing" {
-  default = "true"
-}
-
-variable "network_mode" {
-  description = "true si solo contará con una red privada y false si contará con una red privada una publica "
-}
-
-variable "cores" {
-  default = "1"
-}
-
-variable "memory" {
-  default = "1024"
-}
-
 variable "ssh_label" {
   default = "Personal"
 }
