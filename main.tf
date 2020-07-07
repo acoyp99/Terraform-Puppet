@@ -30,9 +30,7 @@ resource "ibm_compute_vm_instance" "terraform_p_sample" {
       "yes | sudo apt install puppetmaster",
       "git clone ${var.repo_git}",
       "cd ${var.repo_name}",
-      "puppet apply ${var.puppet_file}",
-      "python --version",
-      "python3 --version"
+      "puppet apply ${var.puppet_file}"
     ]
   }
 }
